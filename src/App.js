@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
+//import ReactDOM from "react-dom";
+
 import "./styles.css";
 
 /**
@@ -23,6 +25,11 @@ function Panel(props) {
 }
 
 function FixedControls(props) {
+
+  const onClickHandler = (id) =>{
+    props.changeActive(id);
+  }
+
   return (
     <div
       style={{
@@ -34,21 +41,38 @@ function FixedControls(props) {
       }}
     >
       {props.panels.map(({ id, color }) => (
-        <button>panel {id}</button>
+        <button onClick={() => onClickHandler(id)}>panel {id} with color {color}</button>
       ))}
     </div>
   );
 }
 
 function RenderPanels(props) {
-  return props.panels.map(({ id, color }) => <Panel key={id} color={color} />);
+
+  const comparePanel = (a) => {
+    if (a.id === props.activeId) return -1;
+    else return 1;
+  }
+  
+  const copySorted = (arr) => {
+    return arr.slice().sort(comparePanel);
+  }
+
+  return copySorted(props.panels).map(({ id, color }) => <Panel key={id} color={color} />);
 }
 
 export default function App() {
+
+  const [activePanelId, setAcivePanelId] = useState(0);
+
+  const changeActivePanel = (newId) => {
+    setAcivePanelId(newId);
+  }
+
   return (
     <div className="App">
-      <FixedControls panels={initialPanels} />
-      <RenderPanels panels={initialPanels} />
+      <FixedControls panels={initialPanels}  changeActive={changeActivePanel}  />
+      <RenderPanels panels={initialPanels} activeId={activePanelId}/>
     </div>
   );
 }
