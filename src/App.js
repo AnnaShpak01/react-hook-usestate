@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-//import ReactDOM from "react-dom";
-
 import "./styles.css";
 
 /**
@@ -41,25 +39,22 @@ function FixedControls(props) {
       }}
     >
       {props.panels.map(({ id, color }) => (
-        <button onClick={() => onClickHandler(id)}>panel {id} with color {color}</button>
+        <button key={id} onClick={() => onClickHandler(id)}>panel {id} with color {color}</button>
       ))}
     </div>
   );
 }
 
 function RenderPanels(props) {
+  const copySorted = arr => {
+    return arr.slice().sort(item => (item.id === props.activeId ? -1 : 1));
+  };
 
-  const comparePanel = (a) => {
-    if (a.id === props.activeId) return -1;
-    else return 1;
-  }
-  
-  const copySorted = (arr) => {
-    return arr.slice().sort(comparePanel);
-  }
-
-  return copySorted(props.panels).map(({ id, color }) => <Panel key={id} color={color} />);
+  return copySorted(props.panels).map(({ id, color }) => (
+    <Panel key={id} color={color} />
+  ));
 }
+
 
 export default function App() {
 
