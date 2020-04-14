@@ -1,5 +1,7 @@
 import React, {useState} from "react";
-import "./styles.css";
+import FixedControls from "./FixedControls";
+import RenderPanels from "./RenderPanels";
+import "../styles/styles.css";
 
 /**
  * Instructions
@@ -17,44 +19,6 @@ const initialPanels = [
   { id: 2, color: "purple" },
   { id: 3, color: "violet" }
 ];
-
-function Panel(props) {
-  return <div className="Panel" style={{ backgroundColor: props.color }} />;
-}
-
-function FixedControls(props) {
-
-  const onClickHandler = (id) =>{
-    props.changeActive(id);
-  }
-
-  return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100px",
-        height: "100px"
-      }}
-    >
-      {props.panels.map(({ id, color }) => (
-        <button key={id} onClick={() => onClickHandler(id)}>panel {id} with color {color}</button>
-      ))}
-    </div>
-  );
-}
-
-function RenderPanels(props) {
-  const copySorted = arr => {
-    return arr.slice().sort(item => (item.id === props.activeId ? -1 : 1));
-  };
-
-  return copySorted(props.panels).map(({ id, color }) => (
-    <Panel key={id} color={color} />
-  ));
-}
-
 
 export default function App() {
 
