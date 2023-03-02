@@ -1,5 +1,4 @@
-import React = require("react");
-import {useState} from "react";
+import React, {useState} from "react";
 import FixedControls from "./FixedControls";
 import RenderPanels from "./RenderPanels";
 import "../styles/styles.css";
