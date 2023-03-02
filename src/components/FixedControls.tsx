@@ -1,8 +1,18 @@
-import React from "react";
+import React = require("react");
 
-export default function FixedControls(props) {
+type PanelType={
+  id:number
+  color:string
+}
 
-  const onClickHandler = (id) =>{
+type controlsProp = {
+  panels:PanelType[]
+  changeActive: (id:number) => void
+}
+
+export default function FixedControls(props:controlsProp) {
+
+  const onClickHandler = (id:number):void =>{
     props.changeActive(id);
   }
 

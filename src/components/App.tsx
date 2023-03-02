@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React = require("react");
+import {useState} from "react";
 import FixedControls from "./FixedControls";
 import RenderPanels from "./RenderPanels";
 import "../styles/styles.css";
@@ -13,6 +14,11 @@ import "../styles/styles.css";
  * much or as little of the code as you would like to achieve this.
  */
 
+// type InitialPanelType ={
+//   id:number
+//   color:string
+// }
+
 const initialPanels = [
   { id: 0, color: "navy" },
   { id: 1, color: "orange" },
@@ -24,7 +30,7 @@ export default function App() {
 
   const [activePanelId, setAcivePanelId] = useState(0);
 
-  const changeActivePanel = (newId) => {
+  const changeActivePanel = (newId:number) => {
     setAcivePanelId(newId);
   }
 
