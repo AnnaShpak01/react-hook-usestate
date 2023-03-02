@@ -13,11 +13,6 @@ import "../styles/styles.css";
  * much or as little of the code as you would like to achieve this.
  */
 
-// type InitialPanelType ={
-//   id:number
-//   color:string
-// }
-
 const initialPanels = [
   { id: 0, color: "navy" },
   { id: 1, color: "orange" },

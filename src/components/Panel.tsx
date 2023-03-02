@@ -1,14 +1,9 @@
 import React from 'react';
 
-//import React = require("react");
-
-type Props = {
+export type PanelType = {
   id:number
-  color?: string
+  color: string
 }
-
-//interface OnlyClassNameInterface extends React.FC<{className: string}> {}
-
-export default function Panel (props:Props) {
+export default function Panel (props:PanelType) {
     return (<div className="Panel" style={{ backgroundColor: props.color }} />);
   }

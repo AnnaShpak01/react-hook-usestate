@@ -1,9 +1,5 @@
 import React from "react";
-
-type PanelType={
-  id:number
-  color:string
-}
+import {PanelType} from "./Panel";
 
 type controlsProp = {
   panels:PanelType[]

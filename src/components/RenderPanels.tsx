@@ -1,22 +1,16 @@
 import React from 'react';
-import Panel from "./Panel";
+import Panel, {PanelType} from "./Panel";
 
-type Props = {
-  id:number
-  color: string
-}
-
-
-export default function RenderPanels({ panels, activeId }: {panels:Props[]; activeId:number})  {
-    const copySorted = (arr: Props[]) => {
+export default function RenderPanels({ panels, activeId }: {panels:PanelType[]; activeId:number})  {
+    const copySorted = (arr: PanelType[]) => {
       return arr.slice().sort((item: { id: number; }) => (item.id === activeId ? -1 : 1));
     };
 
-    var panelsArr = copySorted(panels).map(({ id, color }:Props) => (
+    var panelsArr = copySorted(panels).map(({ id, color }:PanelType) => (
       <Panel key={id} id={id} color={color} />
     ));
   
-    return <>
-    {panelsArr}
-    </>
+    return (<>
+              {panelsArr}
+            </>)
   }
